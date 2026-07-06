@@ -68,6 +68,14 @@ img{ max-width:100%; display:block; }
   background:linear-gradient(color-mix(in srgb, var(--accent) 14%, var(--bg-2)), color-mix(in srgb, var(--accent) 14%, var(--bg-2))) padding-box, var(--irid) border-box;
   background-size:auto, 220% 220%; }
 .nav-cta .icon{ width:16px; height:16px; stroke-width:2; color:var(--mint); }
+/* Filled variant (toggle in the theme playground): the whole pill is iridescent.
+   The gradient is slightly deepened and text is white so it stays readable across every hue. */
+[data-cta="fill"] .nav-cta{ color:#fff; border:1.5px solid transparent;
+  background:linear-gradient(rgba(3,9,7,.42), rgba(3,9,7,.42)), var(--irid);
+  background-size:auto, 220% 220%; text-shadow:0 1px 2px rgba(0,0,0,.45); }
+[data-cta="fill"] .nav-cta:hover{ color:#fff; transform:translateY(-1px); box-shadow:0 0 28px var(--glow);
+  background:linear-gradient(rgba(3,9,7,.26), rgba(3,9,7,.26)), var(--irid); background-size:auto, 220% 220%; }
+[data-cta="fill"] .nav-cta .icon{ color:#fff; }
 .nav-toggle{ display:none; background:none; border:1px solid var(--border-2); color:var(--text); border-radius:9px; padding:6px 9px; cursor:pointer; }
 .nav-toggle .icon{ width:20px; height:20px; }
 

@@ -26,10 +26,23 @@ window.SW_currentTheme = function () {
   return document.documentElement.getAttribute("data-theme") || "iridescent-jade";
 };
 
-/* Apply any custom variable overrides saved from the playground (all pages). */
+/* Contact button style: "border" (default, dark pill + iridescent border) or "fill" (whole pill iridescent). */
+window.SW_applyCta = function (mode, persist) {
+  if (mode === "fill") { document.documentElement.setAttribute("data-cta", "fill"); }
+  else { document.documentElement.removeAttribute("data-cta"); mode = "border"; }
+  if (persist) { try { localStorage.setItem("sw-cta", mode); } catch (e) {} }
+};
+window.SW_currentCta = function () {
+  return document.documentElement.getAttribute("data-cta") === "fill" ? "fill" : "border";
+};
+
+/* Apply saved playground preferences on every page (custom vars + CTA style). */
 (function () {
   try {
     var v = JSON.parse(localStorage.getItem("sw-vars") || "null");
     if (v) { for (var k in v) { document.documentElement.style.setProperty(k, v[k]); } }
+  } catch (e) {}
+  try {
+    if (localStorage.getItem("sw-cta") === "fill") { document.documentElement.setAttribute("data-cta", "fill"); }
   } catch (e) {}
 })();
