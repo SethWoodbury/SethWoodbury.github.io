@@ -103,6 +103,9 @@
           <div class="ctrl"><label>Animations</label>
             <label class="switch"><input type="checkbox" id="chk-motion" checked /><span></span></label>
           </div>
+          <div class="ctrl"><label>Filled "Contact" button</label>
+            <label class="switch"><input type="checkbox" id="chk-cta" /><span></span></label>
+          </div>
         </div>
 
         <div class="pg-block">
@@ -213,6 +216,9 @@
     document.getElementById("chk-motion").addEventListener("change", function(){
       document.getElementById("motion-style").textContent = this.checked ? "" : "*{animation:none!important;transition:none!important}";
     });
+    document.getElementById("chk-cta").addEventListener("change", function(){
+      window.SW_applyCta(this.checked ? "fill" : "border", false); repaint();
+    });
 
     function hexA(hex, a){
       var h=hex.replace("#",""); if(h.length===3){h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];}
@@ -224,13 +230,16 @@
       try{
         localStorage.setItem("sw-theme", window.SW_currentTheme());
         localStorage.setItem("sw-vars", JSON.stringify(custom));
+        localStorage.setItem("sw-cta", window.SW_currentCta());
         toast("Applied across the site.");
       }catch(e){ toast("Could not save (private mode?)"); }
     });
     document.getElementById("btn-reset").addEventListener("click", function(){
-      try{ localStorage.removeItem("sw-theme"); localStorage.removeItem("sw-vars"); }catch(e){}
+      try{ localStorage.removeItem("sw-theme"); localStorage.removeItem("sw-vars"); localStorage.removeItem("sw-cta"); }catch(e){}
       Object.keys(custom).forEach(function(k){ root.style.removeProperty(k); }); custom={};
-      window.SW_applyTheme("iridescent-jade", false); markActive("iridescent-jade"); syncPickers(); repaint();
+      window.SW_applyTheme("iridescent-jade", false); window.SW_applyCta("border", false);
+      document.getElementById("chk-cta").checked = false;
+      markActive("iridescent-jade"); syncPickers(); repaint();
       document.getElementById("css-out").style.display="none"; toast("Reset to default.");
     });
     document.getElementById("btn-copy").addEventListener("click", function(){
@@ -242,6 +251,7 @@
     });
 
     // init
+    document.getElementById("chk-cta").checked = (window.SW_currentCta() === "fill");
     markActive(window.SW_currentTheme()); syncPickers();
   })();
   </script>
