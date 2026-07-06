@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="iridescent-jade">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme Playground · Seth M. Woodbury</title>
+  <meta name="description" content="A live control panel to try color themes for Seth M. Woodbury's site." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236ee7b7'/%3E%3Cstop offset='0.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <script>(function(){try{var t=localStorage.getItem('sw-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/themes.css" />
+  <style>
+    .pg-wrap{ display:grid; grid-template-columns:380px 1fr; gap:28px; align-items:start; }
+    .pg-panel{ position:sticky; top:88px; border:1px solid var(--border); border-radius:var(--radius); background:var(--panel); padding:22px; }
+    .pg-panel h3{ font-family:var(--font-display); font-size:1rem; margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+    .pg-panel h3 .icon{ width:18px; height:18px; color:var(--mint); }
+    .pg-block{ padding:16px 0; border-bottom:1px solid var(--border); }
+    .pg-block:last-child{ border-bottom:none; }
+    .theme-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .theme-card{ text-align:left; cursor:pointer; border:1px solid var(--border); border-radius:12px; background:color-mix(in srgb,var(--text) 2%,transparent); padding:12px; transition:all .16s ease; color:var(--text); }
+    .theme-card:hover{ border-color:var(--border-2); transform:translateY(-2px); }
+    .theme-card.active{ border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), 0 8px 22px var(--glow); }
+    .theme-card .sw{ display:flex; gap:4px; margin-bottom:8px; }
+    .theme-card .sw i{ width:16px; height:16px; border-radius:5px; display:block; }
+    .theme-card b{ display:block; font-family:var(--font-display); font-size:12.5px; }
+    .theme-card span{ color:var(--muted-2); font-size:10.5px; line-height:1.35; display:block; margin-top:2px; }
+    .ctrl{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin:10px 0; }
+    .ctrl label{ font-size:13px; color:var(--muted); }
+    .ctrl input[type=color]{ width:44px; height:30px; border:1px solid var(--border-2); border-radius:8px; background:none; cursor:pointer; padding:2px; }
+    .ctrl input[type=range]{ width:150px; accent-color:var(--accent); }
+    .ctrl select{ background:var(--panel-solid); color:var(--text); border:1px solid var(--border-2); border-radius:8px; padding:6px 8px; font-size:13px; }
+    .switch{ position:relative; width:44px; height:24px; }
+    .switch input{ display:none; }
+    .switch span{ position:absolute; inset:0; background:var(--panel-solid); border:1px solid var(--border-2); border-radius:999px; transition:.2s; }
+    .switch span::after{ content:""; position:absolute; width:18px; height:18px; border-radius:50%; background:var(--muted); top:2px; left:2px; transition:.2s; }
+    .switch input:checked + span{ background:var(--irid); }
+    .switch input:checked + span::after{ transform:translateX(20px); background:#fff; }
+    .pg-actions{ display:flex; flex-direction:column; gap:9px; margin-top:6px; }
+    .pg-note{ font-family:var(--font-mono); font-size:11px; color:var(--muted-2); margin-top:10px; }
+    textarea#css-out{ width:100%; height:120px; margin-top:10px; background:var(--panel-solid); color:var(--mint); border:1px solid var(--border-2); border-radius:10px; padding:10px; font-family:var(--font-mono); font-size:11px; display:none; }
+    .preview{ border:1px solid var(--border); border-radius:var(--radius); background:var(--panel); overflow:hidden; }
+    .preview .pv-hero{ position:relative; padding:34px 30px; overflow:hidden; border-bottom:1px solid var(--border); }
+    .preview canvas{ position:absolute; inset:0; width:100%; height:100%; opacity:.8; }
+    .preview .pv-hero > *{ position:relative; z-index:1; }
+    .preview .pv-body{ padding:28px 30px; display:grid; gap:22px; }
+    .toast{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--panel-2); border:1px solid var(--border-2); color:var(--text); padding:12px 20px; border-radius:12px; font-size:14px; opacity:0; transition:.25s; box-shadow:0 10px 30px rgba(0,0,0,.4); z-index:99; }
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+    @media (max-width:900px){ .pg-wrap{ grid-template-columns:1fr; } .pg-panel{ position:static; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="mark">SW</span><span>Seth M. Woodbury<small>Enzyme Design · Baker Lab</small></span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#research">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="media.html">In the Media</a>
+        <a class="nav-cta" href="index.html#contact"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.7 5 5 1.7-5 1.7L12 16l-1.7-4.6-5-1.7 5-1.7z"/></svg>Contact · Let's Innovate</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <p class="section-label">Theme playground</p>
+      <h1 class="title" style="font-size:clamp(2rem,4vw,2.9rem)">Try it your <span class="irid">way</span></h1>
+      <p class="section-intro" style="margin-top:12px">Pick a palette or invent your own. Changes preview instantly on the right. When you like one, apply it across the whole site, or copy it out as a reusable theme to drop into <code style="font-family:var(--font-mono);color:var(--mint)">assets/themes.css</code>.</p>
+    </div>
+  </header>
+
+  <section style="padding-top:8px">
+    <div class="container pg-wrap">
+
+      <!-- ================= CONTROL PANEL ================= -->
+      <aside class="pg-panel">
+        <div class="pg-block">
+          <h3><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>Preset themes</h3>
+          <div class="theme-grid" id="theme-grid"></div>
+        </div>
+
+        <div class="pg-block">
+          <h3><svg class="icon" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="12" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M12 3a9 9 0 1 0 6 15.5"/></svg>Customize</h3>
+          <div class="ctrl"><label>Primary accent</label><input type="color" id="c-accent" value="#34d399" /></div>
+          <div class="ctrl"><label>Iridescent mid</label><input type="color" id="c-irid" value="#22d3ee" /></div>
+          <div class="ctrl"><label>Iridescent tail</label><input type="color" id="c-tail" value="#a78bfa" /></div>
+          <div class="ctrl"><label>Background</label><input type="color" id="c-bg" value="#04100c" /></div>
+          <div class="ctrl"><label>Glow strength</label><input type="range" id="s-glow" min="0" max="80" value="35" /></div>
+          <div class="ctrl"><label>Corner radius</label><input type="range" id="s-radius" min="4" max="30" value="18" /></div>
+          <div class="ctrl"><label>Heading font</label>
+            <select id="sel-font">
+              <option value='"Space Grotesk", sans-serif'>Space Grotesk</option>
+              <option value='"Inter", sans-serif'>Inter</option>
+              <option value='"JetBrains Mono", monospace'>JetBrains Mono</option>
+            </select>
+          </div>
+          <div class="ctrl"><label>Animations</label>
+            <label class="switch"><input type="checkbox" id="chk-motion" checked /><span></span></label>
+          </div>
+        </div>
+
+        <div class="pg-block">
+          <div class="pg-actions">
+            <button class="btn primary" id="btn-apply">Apply across the site</button>
+            <button class="btn" id="btn-copy">Copy as a reusable theme</button>
+            <button class="btn" id="btn-reset">Reset to default</button>
+          </div>
+          <p class="pg-note">"Apply" remembers your choice on every page (stored in your browser). "Copy" gives you a <code style="font-family:var(--font-mono)">[data-theme]</code> block to paste into themes.css so it becomes a permanent named option.</p>
+          <textarea id="css-out" readonly></textarea>
+        </div>
+      </aside>
+
+      <!-- ================= LIVE PREVIEW ================= -->
+      <div class="preview">
+        <div class="pv-hero">
+          <canvas id="molecular-canvas" aria-hidden="true"></canvas>
+          <span class="eyebrow"><span class="dot"></span>Live preview</span>
+          <h1 class="title" style="font-size:2.4rem;margin:14px 0 6px">I design <span class="irid">enzymes</span></h1>
+          <p class="affil" style="margin:0 0 16px">Bioengineering PhD Student, Baker Lab, UW IPD.</p>
+          <div class="cta-row">
+            <span class="btn primary">Email me</span>
+            <span class="btn">Google Scholar</span>
+            <span class="nav-cta" style="align-self:center">Contact · Let's Innovate</span>
+          </div>
+        </div>
+        <div class="pv-body">
+          <div class="cards" style="grid-template-columns:1fr 1fr">
+            <div class="card"><div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l8.66 5v10L12 22 3.34 17V7z"/><circle cx="12" cy="12" r="2.4"/></svg></div><h3>De novo metalloenzymes</h3><p>Metal-containing enzymes designed atom by atom.</p></div>
+            <div class="card"><div class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2"/><path d="M7.7 8.4 11 15M16.3 8.4 13 15M8 7h8"/></svg></div><h3>Generative AI for enzymes</h3><p>From a target reaction to candidate proteins.</p></div>
+          </div>
+          <div class="chips" style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="chip">Research collaboration</span><span class="chip">Consulting</span><span class="chip">Speaking &amp; talks</span>
+          </div>
+          <div class="pub" style="border:1px solid var(--border);border-radius:14px;padding:16px;grid-template-columns:120px 1fr">
+            <div class="venue"><span class="j">Nature</span><span class="yr">2025</span></div>
+            <div class="p-body"><p class="t">Computational Design of Metallohydrolases</p><p class="authors">Kim, D.; <span class="me">Woodbury, S. M.</span>; Ahern, W.; Baker, D.</p><div class="meta"><span class="badge-role">Lead author</span><span class="badge-role corr">Corresponding author</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot-inner">
+      <p>© <span id="year">2026</span> Seth M. Woodbury · Seattle, WA</p>
+      <div class="foot-links"><a href="index.html">Home</a><a href="publications.html">Publications</a><a href="media.html">In the Media</a></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <style id="motion-style"></style>
+
+  <script src="assets/theme.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+  (function () {
+    var root = document.documentElement, custom = {};
+    var grid = document.getElementById("theme-grid");
+
+    function setVar(name, val){ custom[name] = val; root.style.setProperty(name, val); }
+    function repaint(){ window.dispatchEvent(new CustomEvent("sw-theme-change")); }
+    function toast(msg){ var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); setTimeout(function(){t.classList.remove("show");},2200); }
+
+    // build preset cards
+    (window.SW_THEMES||[]).forEach(function(t){
+      var b=document.createElement("button");
+      b.className="theme-card"; b.dataset.id=t.id;
+      b.innerHTML='<span class="sw">'+t.swatch.map(function(c){return '<i style="background:'+c+'"></i>';}).join("")+'</span><b>'+t.name+'</b><span>'+t.note+'</span>';
+      b.addEventListener("click", function(){
+        // clear custom overrides so the preset shows cleanly
+        Object.keys(custom).forEach(function(k){ root.style.removeProperty(k); }); custom={};
+        window.SW_applyTheme(t.id, false);
+        markActive(t.id); syncPickers(); repaint();
+      });
+      grid.appendChild(b);
+    });
+    function markActive(id){ grid.querySelectorAll(".theme-card").forEach(function(c){ c.classList.toggle("active", c.dataset.id===id); }); }
+
+    function cssVar(n){ return getComputedStyle(root).getPropertyValue(n).trim(); }
+    function syncPickers(){
+      var a=cssVar("--accent"), i=cssVar("--a4"), t=cssVar("--a6"), b=cssVar("--bg");
+      if(/^#/.test(a)) document.getElementById("c-accent").value=a;
+      if(/^#/.test(i)) document.getElementById("c-irid").value=i;
+      if(/^#/.test(t)) document.getElementById("c-tail").value=t;
+      if(/^#/.test(b)) document.getElementById("c-bg").value=b;
+    }
+
+    function buildIrid(){
+      var a=document.getElementById("c-accent").value, i=document.getElementById("c-irid").value, t=document.getElementById("c-tail").value;
+      setVar("--irid","linear-gradient(110deg,"+a+","+i+","+t+")");
+      setVar("--a1",a); setVar("--a2",a); setVar("--a3",i); setVar("--a4",i); setVar("--a5",t); setVar("--a6",t);
+      setVar("--accent",a); setVar("--mint",a);
+      repaint();
+    }
+    document.getElementById("c-accent").addEventListener("input", buildIrid);
+    document.getElementById("c-irid").addEventListener("input", buildIrid);
+    document.getElementById("c-tail").addEventListener("input", buildIrid);
+    document.getElementById("c-bg").addEventListener("input", function(){
+      setVar("--bg", this.value); setVar("--bg-2", this.value);
+    });
+    document.getElementById("s-glow").addEventListener("input", function(){
+      var a=document.getElementById("c-accent").value; setVar("--glow", hexA(a, this.value/100));
+    });
+    document.getElementById("s-radius").addEventListener("input", function(){ setVar("--radius", this.value+"px"); });
+    document.getElementById("sel-font").addEventListener("change", function(){ setVar("--font-display", this.value); });
+    document.getElementById("chk-motion").addEventListener("change", function(){
+      document.getElementById("motion-style").textContent = this.checked ? "" : "*{animation:none!important;transition:none!important}";
+    });
+
+    function hexA(hex, a){
+      var h=hex.replace("#",""); if(h.length===3){h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];}
+      var r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16);
+      return "rgba("+r+","+g+","+b+","+a.toFixed(2)+")";
+    }
+
+    document.getElementById("btn-apply").addEventListener("click", function(){
+      try{
+        localStorage.setItem("sw-theme", window.SW_currentTheme());
+        localStorage.setItem("sw-vars", JSON.stringify(custom));
+        toast("Applied across the site.");
+      }catch(e){ toast("Could not save (private mode?)"); }
+    });
+    document.getElementById("btn-reset").addEventListener("click", function(){
+      try{ localStorage.removeItem("sw-theme"); localStorage.removeItem("sw-vars"); }catch(e){}
+      Object.keys(custom).forEach(function(k){ root.style.removeProperty(k); }); custom={};
+      window.SW_applyTheme("iridescent-jade", false); markActive("iridescent-jade"); syncPickers(); repaint();
+      document.getElementById("css-out").style.display="none"; toast("Reset to default.");
+    });
+    document.getElementById("btn-copy").addEventListener("click", function(){
+      var names=["--bg","--bg-2","--panel","--panel-2","--panel-solid","--border","--border-2","--glow","--a1","--a2","--a3","--a4","--a5","--a6","--mint","--accent","--gold","--text","--muted","--muted-2","--irid","--ink"];
+      var lines = names.map(function(n){ return "  "+n+": "+cssVar(n)+";"; }).join("\n");
+      var block = '[data-theme="my-custom"]{\n'+lines+'\n}';
+      var out=document.getElementById("css-out"); out.style.display="block"; out.value=block; out.select();
+      try{ navigator.clipboard.writeText(block); toast("Theme CSS copied."); }catch(e){ toast("Selected, press Cmd/Ctrl+C."); }
+    });
+
+    // init
+    markActive(window.SW_currentTheme()); syncPickers();
+  })();
+  </script>
+</body>
+</html>

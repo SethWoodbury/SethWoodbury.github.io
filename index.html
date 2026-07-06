@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="iridescent-jade">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seth M. Woodbury · Enzyme Design · Baker Lab · UW IPD</title>
+  <meta name="description" content="Seth M. Woodbury designs de novo metalloenzymes with generative AI and computational chemistry in the Baker Lab at the UW Institute for Protein Design." />
+  <meta name="author" content="Seth M. Woodbury" />
+  <link rel="canonical" href="https://sethwoodbury.github.io/" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Seth M. Woodbury · I design enzymes" />
+  <meta property="og:description" content="Bioengineering PhD student, Baker Lab, UW Institute for Protein Design. De novo metalloenzyme design with generative AI." />
+  <meta property="og:url" content="https://sethwoodbury.github.io/" />
+  <meta property="og:image" content="https://sethwoodbury.github.io/assets/profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236ee7b7'/%3E%3Cstop offset='0.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%2304100c'%3ESW%3C/text%3E%3C/svg%3E" />
+  <script>(function(){try{var t=localStorage.getItem('sw-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/themes.css" />
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="mark">SW</span>
+        <span>Seth M. Woodbury<small>Enzyme Design · Baker Lab</small></span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#work">Work</a>
+        <a href="publications.html">Publications</a>
+        <a href="media.html">In the Media</a>
+        <a class="nav-cta" href="#contact">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.7 5 5 1.7-5 1.7L12 16l-1.7-4.6-5-1.7 5-1.7z"/></svg>
+          Contact · Let's Innovate
+        </a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero" id="top">
+    <canvas id="molecular-canvas" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot"></span>Bioengineering PhD Student · Baker Lab · UW IPD</span>
+          <h1 class="title">I design<br /><span class="irid">enzymes</span> that have never existed.</h1>
+          <p class="subtitle">Seth M. Woodbury</p>
+          <p class="affil">Bioengineering PhD Student, <a href="https://www.bakerlab.org/" target="_blank" rel="noopener">David Baker Lab</a>, University of Washington <a href="https://www.ipd.uw.edu/" target="_blank" rel="noopener">Institute for Protein Design</a>.</p>
+          <p class="lede">Using generative AI and computational chemistry to create de novo metalloenzymes for the reactions the world needs next.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:woodbuse@uw.edu">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Email me
+            </a>
+            <a class="btn" href="https://scholar.google.com/citations?user=F8hE9PEAAAAJ&hl=en" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 3 2 9l10 6 10-6-10-6Z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>
+              Google Scholar
+            </a>
+            <a class="btn" href="assets/Seth_Woodbury_CV.pdf" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              Download CV
+            </a>
+            <a class="btn" href="media.html">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+              In the Media
+            </a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="badge-float badge-1"><span class="b-dot"></span>NSF Research Fellow</div>
+          <div class="badge-float badge-2"><span class="b-dot"></span>DARPA · $1.99M</div>
+          <div class="badge-float badge-3"><span class="b-dot"></span>Nature '25 · Lead author</div>
+          <div class="portrait-ring">
+            <img class="portrait" id="profile-photo" src="assets/profile.jpg" alt="Seth M. Woodbury" />
+            <div class="portrait-fallback" id="profile-fallback" style="display:none"><span>SW</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Let's build something -->
+      <div class="availability reveal">
+        <span class="av-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+        </span>
+        <div class="av-text">
+          <h3>Let's build something</h3>
+          <p>I collaborate with labs, companies, and teams working on hard problems in catalysis, sustainability, and therapeutics. If you are thinking about what enzymes could do for your work, I would enjoy the conversation.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Research collaboration</span>
+          <span class="chip">Consulting</span>
+          <span class="chip">Speaking &amp; talks</span>
+          <span class="chip">What's next</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================== NOBEL BANNER ============================== -->
+  <div class="container" style="margin-top:10px">
+    <a href="media.html" class="nobel-banner reveal">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="5"/><path d="m9 12.5-1.5 9 4.5-3 4.5 3-1.5-9"/><path d="m12 5.6.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2L9 7.8l2-.3z"/></svg>
+      My metallohydrolase design was featured in David Baker's 2024 Nobel Lecture.
+      <span class="go">Watch the moment <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+
+  <!-- ============================== ABOUT ============================== -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <h2 class="section-title">From chemistry, physics, and biochemistry to protein design.</h2>
+      <p class="section-intro">
+        I came to protein design through chemistry, physics, and biochemistry, three fields I studied together as an
+        undergraduate because I wanted to understand how molecules actually work. That curiosity led me from biomaterials
+        research toward a bigger question: if we understand the physics of a reaction, can we design an enzyme to catalyze
+        it on demand? Today, in the Baker Lab at the UW Institute for Protein Design, I build de novo metalloenzymes using
+        generative AI, computational chemistry, and hands-on biochemistry. My goal is a future where scientists can
+        custom-design highly active, ideal biocatalysts for any physics-allowed target reaction.
+      </p>
+      <div class="stats reveal">
+        <div class="stat"><div class="num">Nature</div><div class="lbl">Lead author, <i>Computational Design of Metallohydrolases</i> (2025)</div></div>
+        <div class="stat"><div class="num">$1.99M</div><div class="lbl">DARPA program, catalytic nerve-agent hydrolases (2025 to 2026)</div></div>
+        <div class="stat"><div class="num">NSF</div><div class="lbl">Graduate Research Fellow (2023 to 2028)</div></div>
+        <div class="stat"><div class="num">9</div><div class="lbl">Peer-reviewed papers and preprints</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== RESEARCH (PRIMARY) ============================== -->
+  <section id="research">
+    <div class="container">
+      <p class="section-label">Current research</p>
+      <h2 class="section-title">Enzymes that do not exist in nature.</h2>
+      <p class="section-intro">My research designs enzymes that do not exist in nature, then tests them in the lab. I combine generative models, computational chemistry, and experimental biochemistry to move from an idea for a reaction to a working, characterized catalyst.</p>
+      <div class="cards reveal">
+        <div class="card">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l8.66 5v10L12 22 3.34 17V7z"/><circle cx="12" cy="12" r="2.4"/></svg></div>
+          <h3>De novo metalloenzymes</h3>
+          <p>I design metal-containing enzymes from scratch, building active sites atom by atom rather than borrowing from natural proteins. Metals let these enzymes reach chemistry that protein alone cannot.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2"/><path d="M7.7 8.4 11 15M16.3 8.4 13 15M8 7h8"/></svg></div>
+          <h3>Generative AI for enzymes</h3>
+          <p>I use RFdiffusion, ProteinMPNN, RoseTTAFold, and structure prediction to generate and validate new enzyme designs computationally. These tools turn a target reaction into candidate proteins ready for the bench.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M4 20C4 11 11 4 20 4c0 9-7 16-16 16Z"/><path d="M4 20c4-6 8-9 12-11"/></svg></div>
+          <h3>Sustainable chemistry &amp; remediation</h3>
+          <p>Designed enzymes can replace harsh reagents and energy-intensive steps in manufacturing, and break down pollutants in the environment. I work toward catalysts that make green chemistry practical at scale.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Biodefense &amp; therapeutics</h3>
+          <p>I design catalytic hydrolases that neutralize nerve agents, part of a DARPA-funded program ($1.99M, 2025 to 2026). The same design principles extend to enzymes with therapeutic potential.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== WORK / OPEN SOURCE ============================== -->
+  <section id="work">
+    <div class="container">
+      <p class="section-label">Selected work &amp; open source</p>
+      <h2 class="section-title">Published methods and the tools I build.</h2>
+      <p class="section-intro">A few results I helped author, and the open-source tooling I develop for my PhD. Full press and paper links live on the <a href="media.html">In the Media</a> page, and the complete record is on <a href="publications.html">Publications</a>.</p>
+      <div class="projects reveal">
+
+        <div class="proj">
+          <div class="top"><span class="tag">Lead author</span><span class="nobel-ribbon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>Nobel Lecture</span></div>
+          <h3>Metallohydrolases</h3>
+          <p>Computational design of metal-dependent hydrolases with sophisticated active sites for ester hydrolysis.</p>
+          <div class="links">
+            <a href="https://github.com/baker-laboratory/Metallohydrolase_Enzyme_Design" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub</a>
+            <a href="https://www.nature.com/articles/s41586-025-09746-w" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>Paper</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="top"><span class="tag">Co-author</span><span class="venue-pill">Nat. Methods 2025</span></div>
+          <h3>RFdiffusion2</h3>
+          <p>A generative model that scaffolds enzyme backbones directly around a catalytic active site.</p>
+          <div class="links">
+            <a href="https://github.com/RosettaCommons/RFdiffusion2" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub</a>
+            <a href="https://www.nature.com/articles/s41592-025-02975-x" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>Paper</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="top"><span class="tag">Co-author</span><span class="venue-pill">In review, Nature</span></div>
+          <h3>Metalloproteases</h3>
+          <p>Designed metalloproteases with programmable substrate specificity. Preprint on bioRxiv.</p>
+          <div class="links">
+            <a href="https://www.biorxiv.org/content/10.1101/2025.11.20.689622v1" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>Preprint</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="top"><span class="tag">My repo</span></div>
+          <h3>protein_chisel</h3>
+          <p>Tools and pipelines for refining sequences for de novo enzyme designs.</p>
+          <div class="links">
+            <a href="https://github.com/SethWoodbury/protein_chisel" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="top"><span class="tag">My repo</span></div>
+          <h3>cowboy-quantum-chemistry</h3>
+          <p>Active-site preparation, machine-learned force-field NEB and transition-state searches, and QM job management.</p>
+          <div class="links">
+            <a href="https://github.com/SethWoodbury/cowboy-quantum-chemistry" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="top"><span class="tag">My repo</span></div>
+          <h3>enzyme-design PhD scripts</h3>
+          <p>Theozyme and ligand handling, MPNN sequence design, structure-prediction I/O, and design filtering and metrics.</p>
+          <div class="links">
+            <a href="https://github.com/SethWoodbury/enzyme-design-smw-phd-scripts" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub</a>
+            <a href="https://github.com/SethWoodbury" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>All repos</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== EARLIER WORK (SECONDARY) ============================== -->
+  <section class="zone-secondary" id="biomaterials">
+    <div class="container">
+      <span class="zone-tag">Earlier work · Undergraduate research</span>
+      <h2 class="section-title">Biomaterials &amp; tissue engineering.</h2>
+      <p class="section-intro">
+        Before protein design, I spent years in the <a href="https://mishinalab.dent.umich.edu/" target="_blank" rel="noopener">Mishina Lab</a>
+        at the University of Michigan developing biomaterials for drug delivery and tissue engineering, including
+        nanofibrous scaffolds for periodontal and craniofacial regeneration. It is work I am still proud of, and it
+        taught me how molecular design translates into real biological function. The full record, including my
+        first-author papers, is on <a href="publications.html">Publications</a>.
+      </p>
+
+      <div class="ip-card reveal">
+        <div class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="m9 13-1.6 8L12 18l4.6 3L15 13"/></svg></div>
+        <div>
+          <h3>Intellectual property</h3>
+          <p>My biomaterials research contributed to a US patent application on nanofibrous matrices for tissue engineering.</p>
+          <p class="meta">Nanofibrous Tissue Engineering Matrices with Improved Clinical Handling Properties for Periodontal and Craniofacial Regeneration. Swanson, W. B.; Woodbury, S. M.; Mishina, Y. &nbsp;·&nbsp; <a href="https://patents.google.com/patent/US20240058103A1/en" target="_blank" rel="noopener">US20240058103A1</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== AFFILIATIONS ============================== -->
+  <section id="affiliations">
+    <div class="container">
+      <p class="section-label">Training &amp; affiliations</p>
+      <h2 class="section-title">Where I learned to do this.</h2>
+      <div class="affils reveal">
+        <div class="inst">
+          <div class="crest uw">UW</div>
+          <div class="i-body">
+            <b>University of Washington</b>
+            <span>PhD, Bioengineering · Baker Lab · Institute for Protein Design</span>
+            <a href="https://www.ipd.uw.edu/" target="_blank" rel="noopener">ipd.uw.edu</a>
+          </div>
+        </div>
+        <div class="inst">
+          <div class="crest um">UM</div>
+          <div class="i-body">
+            <b>University of Michigan</b>
+            <span>BS with Highest Honors · Chemical Science, Physics, Biochemistry · Mishina Lab</span>
+            <a href="https://lsa.umich.edu/" target="_blank" rel="noopener">umich.edu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's innovate.</h2>
+      <p class="section-intro">Whether you have a reaction in mind, a project to discuss, or a question about protein design, I am glad to hear from you.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-links">
+            <a href="mailto:woodbuse@uw.edu">
+              <svg class="icon ci" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <span><b>Email</b><small>woodbuse@uw.edu</small></span>
+            </a>
+            <a href="https://scholar.google.com/citations?user=F8hE9PEAAAAJ&hl=en" target="_blank" rel="noopener">
+              <svg class="icon ci" viewBox="0 0 24 24"><path d="M12 3 2 9l10 6 10-6-10-6Z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>
+              <span><b>Google Scholar</b><small>Publications and citations</small></span>
+            </a>
+            <a href="https://orcid.org/0000-0003-0510-8240" target="_blank" rel="noopener">
+              <svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zM7.4 18H5.6V8.5h1.8V18zm-.9-10.8a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zM18.4 18h-1.8v-4.6c0-1.1 0-2.6-1.6-2.6s-1.8 1.2-1.8 2.5V18h-1.8V8.5h1.7v1.3h.1c.24-.45.83-1.6 2.4-1.6 2 0 2.6 1.35 2.6 3.1V18z"/></svg>
+              <span><b>ORCID</b><small>0000-0003-0510-8240</small></span>
+            </a>
+            <a href="https://www.linkedin.com/in/seth-woodbury2023/" target="_blank" rel="noopener">
+              <svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+              <span><b>LinkedIn</b><small>in/seth-woodbury2023</small></span>
+            </a>
+            <a href="https://github.com/SethWoodbury" target="_blank" rel="noopener">
+              <svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              <span><b>GitHub</b><small>@SethWoodbury</small></span>
+            </a>
+            <a href="https://www.bakerlab.org/" target="_blank" rel="noopener">
+              <svg class="icon ci" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+              <span><b>Baker Lab</b><small>bakerlab.org · UW IPD</small></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="qr-card">
+          <img src="assets/qr-code.png" alt="QR code linking to sethwoodbury.github.io" />
+          <h3>Scan to save this page</h3>
+          <p>sethwoodbury.github.io</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer>
+    <div class="container foot-inner">
+      <p>© <span id="year">2026</span> Seth M. Woodbury · Seattle, WA</p>
+      <div class="foot-links">
+        <a href="mailto:woodbuse@uw.edu">Email</a>
+        <a href="publications.html">Publications</a>
+        <a href="media.html">In the Media</a>
+        <a href="https://github.com/SethWoodbury" target="_blank" rel="noopener">GitHub</a>
+        <a href="theme.html" title="Try different color themes">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18 3 3 0 0 0 0-6 2 2 0 0 1 0-4 3 3 0 0 0 0-8Z"/></svg>
+          Theme
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/theme.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

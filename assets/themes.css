@@ -1,0 +1,133 @@
+/* =========================================================================
+   THEME REGISTRY  ·  Seth M. Woodbury
+   -------------------------------------------------------------------------
+   Each theme is a set of color tokens. styles.css only references these
+   tokens, so switching themes never touches layout.
+
+   HOW TO USE
+   - Default theme is set on <html data-theme="iridescent-jade">.
+   - Switch live (and remember the choice) from theme.html, or set the
+     data-theme attribute yourself.
+   - ADD A THEME: copy any [data-theme="..."] block below, rename it, and
+     recolor the tokens. It instantly appears in the playground registry
+     (playground reads window.SW_THEMES in theme.js).
+
+   TOKENS
+   --bg --bg-2                 page background
+   --panel --panel-2 --panel-solid   card / surface fills
+   --border --border-2         hairlines
+   --glow                      accent glow color
+   --a1..--a6                  accent ramp (also feeds the molecular canvas)
+   --mint --accent             primary highlight text/links
+   --gold                      "award" accent (labels)
+   --text --muted --muted-2    type colors
+   --irid                      the signature gradient
+   ========================================================================= */
+
+/* ---- fallback defaults (used if no data-theme is set) ---- */
+:root {
+  --bg:#04100c; --bg-2:#061710;
+  --panel:rgba(9,30,22,.55); --panel-2:rgba(10,33,24,.85); --panel-solid:#0a1f17;
+  --border:rgba(52,211,153,.14); --border-2:rgba(52,211,153,.28); --glow:rgba(45,212,191,.35);
+  --a1:#6ee7b7; --a2:#34d399; --a3:#2dd4bf; --a4:#22d3ee; --a5:#7dd3fc; --a6:#a78bfa;
+  --mint:#6ee7b7; --accent:#34d399; --gold:#fcd34d;
+  --text:#eafff6; --muted:#a6c8ba; --muted-2:#6d9081;
+  --irid:linear-gradient(110deg,#6ee7b7,#34d399,#2dd4bf,#22d3ee,#7dd3fc,#a78bfa,#fcd34d);
+  --ink:#04140e; /* dark text that sits on top of --irid */
+}
+
+/* =======================  1 · IRIDESCENT JADE (default)  ================= */
+[data-theme="iridescent-jade"]{
+  --bg:#04100c; --bg-2:#061710;
+  --panel:rgba(9,30,22,.55); --panel-2:rgba(10,33,24,.85); --panel-solid:#0a1f17;
+  --border:rgba(52,211,153,.14); --border-2:rgba(52,211,153,.28); --glow:rgba(45,212,191,.35);
+  --a1:#6ee7b7; --a2:#34d399; --a3:#2dd4bf; --a4:#22d3ee; --a5:#7dd3fc; --a6:#a78bfa;
+  --mint:#6ee7b7; --accent:#34d399; --gold:#fcd34d;
+  --text:#eafff6; --muted:#a6c8ba; --muted-2:#6d9081;
+  --irid:linear-gradient(110deg,#6ee7b7,#34d399,#2dd4bf,#22d3ee,#7dd3fc,#a78bfa,#fcd34d);
+  --ink:#04140e;
+}
+
+/* =======================  2 · ABYSSAL VIOLET  =========================== */
+[data-theme="abyssal-violet"]{
+  --bg:#0a0716; --bg-2:#110b22;
+  --panel:rgba(30,20,54,.55); --panel-2:rgba(33,22,60,.85); --panel-solid:#171030;
+  --border:rgba(167,139,250,.16); --border-2:rgba(167,139,250,.32); --glow:rgba(168,85,247,.38);
+  --a1:#c4b5fd; --a2:#a78bfa; --a3:#818cf8; --a4:#22d3ee; --a5:#f0abfc; --a6:#f472b6;
+  --mint:#c4b5fd; --accent:#a78bfa; --gold:#fcd34d;
+  --text:#f3efff; --muted:#c3b8e0; --muted-2:#8a7fb0;
+  --irid:linear-gradient(110deg,#c4b5fd,#a78bfa,#818cf8,#22d3ee,#f0abfc,#f472b6);
+  --ink:#0a0716;
+}
+
+/* =======================  3 · ARCTIC CYAN  ============================== */
+[data-theme="arctic-cyan"]{
+  --bg:#04121a; --bg-2:#061c28;
+  --panel:rgba(8,34,48,.55); --panel-2:rgba(9,38,54,.85); --panel-solid:#082230;
+  --border:rgba(34,211,238,.16); --border-2:rgba(34,211,238,.32); --glow:rgba(56,189,248,.38);
+  --a1:#a5f3fc; --a2:#67e8f9; --a3:#22d3ee; --a4:#38bdf8; --a5:#818cf8; --a6:#5eead4;
+  --mint:#a5f3fc; --accent:#22d3ee; --gold:#fde68a;
+  --text:#eafcff; --muted:#a4cbd8; --muted-2:#6a94a4;
+  --irid:linear-gradient(110deg,#a5f3fc,#67e8f9,#22d3ee,#38bdf8,#818cf8,#5eead4);
+  --ink:#04121a;
+}
+
+/* =======================  4 · SOLAR FLARE  ============================== */
+[data-theme="solar-flare"]{
+  --bg:#130b06; --bg-2:#1d1108;
+  --panel:rgba(46,28,14,.55); --panel-2:rgba(52,32,16,.85); --panel-solid:#241608;
+  --border:rgba(251,191,36,.16); --border-2:rgba(251,191,36,.32); --glow:rgba(52,211,153,.32);
+  --a1:#fde68a; --a2:#fbbf24; --a3:#fb923c; --a4:#34d399; --a5:#f472b6; --a6:#a3e635;
+  --mint:#fde68a; --accent:#fbbf24; --gold:#fbbf24;
+  --text:#fff7ea; --muted:#dcc6ac; --muted-2:#a08663;
+  --irid:linear-gradient(110deg,#fde68a,#fbbf24,#fb923c,#a3e635,#34d399,#f472b6);
+  --ink:#130b06;
+}
+
+/* =======================  5 · GRAPHITE MONO (minimal)  ================== */
+[data-theme="graphite-mono"]{
+  --bg:#0b0e0d; --bg-2:#121615;
+  --panel:rgba(28,34,32,.55); --panel-2:rgba(32,38,36,.85); --panel-solid:#161b1a;
+  --border:rgba(110,231,183,.12); --border-2:rgba(110,231,183,.26); --glow:rgba(110,231,183,.24);
+  --a1:#6ee7b7; --a2:#5eead4; --a3:#9ca3af; --a4:#d1d5db; --a5:#6ee7b7; --a6:#a1a1aa;
+  --mint:#6ee7b7; --accent:#5eead4; --gold:#e5e7eb;
+  --text:#f0f3f2; --muted:#b0b8b5; --muted-2:#79817e;
+  --irid:linear-gradient(110deg,#6ee7b7,#5eead4,#d1d5db,#9ca3af,#6ee7b7);
+  --ink:#0b0e0d;
+}
+
+/* =======================  6 · HUSKY (UW)  ============================== */
+[data-theme="husky-uw"]{
+  --bg:#0b0820; --bg-2:#12102e;
+  --panel:rgba(35,28,74,.55); --panel-2:rgba(40,32,84,.85); --panel-solid:#1b1640;
+  --border:rgba(178,159,225,.18); --border-2:rgba(178,159,225,.34); --glow:rgba(139,109,214,.36);
+  --a1:#e8e3f7; --a2:#b7a5e6; --a3:#8b6dd6; --a4:#e8c34a; --a5:#c9b6ef; --a6:#ffd54a;
+  --mint:#e8c34a; --accent:#b7a5e6; --gold:#ffd54a;
+  --text:#f4f1fb; --muted:#c6bce0; --muted-2:#8a80ab;
+  --irid:linear-gradient(110deg,#e8e3f7,#b7a5e6,#8b6dd6,#c9b6ef,#e8c34a,#ffd54a);
+  --ink:#0b0820;
+}
+
+/* =======================  7 · MAIZE & BLUE (Michigan)  ================= */
+[data-theme="maize-blue"]{
+  --bg:#050a18; --bg-2:#08122a;
+  --panel:rgba(12,28,58,.55); --panel-2:rgba(14,32,66,.85); --panel-solid:#0a1830;
+  --border:rgba(255,203,5,.16); --border-2:rgba(255,203,5,.3); --glow:rgba(80,140,235,.36);
+  --a1:#ffe27a; --a2:#ffcb05; --a3:#8fb3ff; --a4:#3f7bd6; --a5:#ffd94a; --a6:#a5c8ff;
+  --mint:#ffe27a; --accent:#ffcb05; --gold:#ffcb05;
+  --text:#eef4ff; --muted:#b3c6e6; --muted-2:#7186a8;
+  --irid:linear-gradient(110deg,#ffe27a,#ffcb05,#a5c8ff,#3f7bd6,#8fb3ff,#ffd94a);
+  --ink:#050a18;
+}
+
+/* =======================  8 · ROSE QUARTZ  ============================= */
+[data-theme="rose-quartz"]{
+  --bg:#160810; --bg-2:#210c18;
+  --panel:rgba(54,20,40,.55); --panel-2:rgba(60,22,44,.85); --panel-solid:#2a1020;
+  --border:rgba(244,114,182,.18); --border-2:rgba(244,114,182,.34); --glow:rgba(244,114,182,.36);
+  --a1:#fbcfe8; --a2:#f472b6; --a3:#e879f9; --a4:#a78bfa; --a5:#fda4af; --a6:#f0abfc;
+  --mint:#fbcfe8; --accent:#f472b6; --gold:#fcd34d;
+  --text:#fff0f7; --muted:#e0bccf; --muted-2:#a67a90;
+  --irid:linear-gradient(110deg,#fbcfe8,#f472b6,#e879f9,#a78bfa,#f0abfc,#fda4af);
+  --ink:#160810;
+}
