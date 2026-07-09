@@ -357,3 +357,9 @@ footer{ border-top:1px solid var(--border); padding:40px 0; margin-top:40px; }
   .flow-arrow{ justify-content:center; }
   .flow-arrow .icon{ transform:rotate(90deg); }
 }
+/* animated coil glyph (step 3): gently "turns" in place via horizontal-scale breathe */
+.icon--coil{ animation:coil-turn 8s ease-in-out infinite; transform-origin:50% 50%; will-change:transform; }
+.icon--coil .coil-back{ animation:coil-depth 8s ease-in-out infinite; }
+@keyframes coil-turn{ 0%,100%{ transform:scaleX(1); } 50%{ transform:scaleX(0.62); } }
+@keyframes coil-depth{ 0%,100%{ opacity:0.45; } 50%{ opacity:0.28; } }
+@media (prefers-reduced-motion:reduce){ .icon--coil, .icon--coil .coil-back{ animation:none; } }
